@@ -1,0 +1,95 @@
+5. 
+
+#Function factorial(num) to find the factorial of a given number
+#We will solve this problem using recursion
+
+def factorial(num):
+    '''
+    DOCSTRING: Function to find the factorial of a given number
+    INPUT: Number for which factorial needs to be found
+    OUTPUT: Factorial of the number
+    '''
+    
+    #Base case
+    if num == 0:
+        return 1
+    #Handling the negative integers
+    elif num < 0:
+        print ('Factorial is defined only for non-negative integers')
+    else:
+        #Recursive call to the function factorial
+        return num * factorial(num-1)
+
+######################################################################################################################################
+
+6.
+
+#Function fib(n) to generate fibonacci number
+'''
+Fibonacci Series: a series of numbers in which each number ( Fibonacci number ) is the sum 
+of the two preceding numbers. The simplest is the series 1, 1, 2, 3, 5, 8, etc. 
+'''
+#We will use recursion to solve this problem
+def fib(n):
+    '''
+    DOCSTRING: Function to generate the fibonacci number
+    INPUT: Position of the number in fibonacci series
+    OUTPUT: Fibonacci number
+    '''
+    #Base case
+    if n == 1 or n == 2:
+        return 1
+    else:
+        #Recursive call to the function fib
+        return fib(n-1) + fib(n-2)
+
+fib_list=[]
+fib_len=10
+#Generating fibonacci series of length fib_len
+for i in range(1,fib_len+1):
+    fib_list.append(fib(i))
+print(fib_list)
+
+#####################################################################################################################################
+
+7.
+
+#Function firstrecurringchar(string) to find the first recurring character in a given string
+#The below function has a time complexity of O(n)
+
+def firstrecurringchar(string):
+    '''
+    DOCSTRING: Function to find the first recurring character in a given string
+    INPUT: String
+    OUTPUT: First recurring character
+    '''
+    
+    hash_tbl = {}
+    for char in string:
+        if char in hash_tbl:
+            return char
+        else:
+            hash_tbl[char] = 1
+
+#####################################################################################################################################
+
+8.
+
+#Function arr_2d(row,col) to define a 2D array in Python.
+#It will ask for the array elements from the user
+#It will then display the array to the user.
+
+def arr_2d(row,col):
+    '''
+    DOCSTRING: Function to generate a 2D array in Python
+    INPUT: Number of rows, Number of columns
+    '''
+    
+    #Default 2D array with every element as 0
+    arr = [[0 for j in range(col)] for i in range(row)]
+    
+    for i in range(row):
+        for j in range(col):
+            arr[i][j] = input(f'Enter any number at index [{i},{j}]: ')
+    print('\nArray created by user is: \n')      
+    print (arr)
