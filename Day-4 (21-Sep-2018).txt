@@ -1,0 +1,43 @@
+10.
+
+ASKED IN AMAZON
+
+Problem Statement: Given an array of positive integers, find the number of subsets whose elements add upto a given number.
+
+Example: For the array [2,4,6,10], number of subsets whose elements add upto 16 are 2 i.e [2,4,10] and [6,10] 
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Solution:
+
+def count_sets(arr,total,i):
+    '''
+    DOCSTRING: Function to find the number of subsets for a given array, whose elements add upto a given total
+    INPUT: 1. Array 2. Total 3. Index position to start from
+    OUTPUT: Number of subsets with sum of elements equal to total
+    Time complexity: O(2^n)
+    '''
+    
+    #Base case
+    if total == 0:
+        return 1
+    elif total < 0:
+        return 0
+    elif i < 0:
+        return 0
+    #Recursive call to the function 'count_sets'
+    elif total < arr[i]:
+        return count_sets(arr,total,i-1)
+    else:
+        return count_sets(arr,total,i-1) + count_sets(arr,total - arr[i],i-1)
+
+
+arr = [2,4,6,10]
+total = 16
+i = len(arr) - 1
+
+count_sets(arr,total,i)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+OUTPUT: 2
