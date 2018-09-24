@@ -1,0 +1,37 @@
+11.
+
+ASKED IN AMAZON 
+
+Problem Statement: Given a staircase of N steps, find the number of ways in which a person can climb it if he/she can take X step(s) each time. Here X is the set of steps a person can take.
+
+Example: X=[1,2] means the person can take either 1 or 2 step(s) each time.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Solution:
+
+def stairs_num_ways(N,steps):
+    '''
+    DOCSTRING: Function to find the number of ways a person can climb N steps where he can take X step(s) each time.
+    INPUT: 1. Number of steps in the staircase 2. List of steps a person can take each time (must be greater than 0)
+    OUTPUR: Number of ways staircase can be climbed up
+    TIME COMPLEXITY: O(2^n)
+    '''
+    
+    total = 0
+    
+    #Base case
+    if N == 0:
+        return 1
+    
+    for i in steps:
+        if N - i >= 0:
+            #Recursive case
+            total +=  stairs_num_ways(N-i,steps)
+    return total
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+stairs_num_ways(6,[1,2])
+
+OUTPUT: 13
