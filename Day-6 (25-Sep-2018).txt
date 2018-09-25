@@ -1,0 +1,47 @@
+12.
+
+ASKED IN FACEBOOK INTERVIEW
+
+Problem Statement: If each alphabet is mapped as follows:
+a -> 1
+b -> 2
+c -> 3
+..
+..
+z -> 26
+Find the number of messages a dataset can represent.
+
+For example: 
+1. Dataset '123' represents 3 messages i.e 'abc', 'lc' and 'aw'
+2. Dataset '263' represents 2 messages i.e 'bfc' and 'zc'
+3. Dataset '011' represents 0 message as any dataset which starts with 0 does not represent any message
+4. Dataset '203' represents 1 message i.e 'tc' 
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Solution:
+
+def msg_num_ways(data,n):
+    
+    index = len(data) - n
+    
+    #Base case
+    if n == 0 or n == 1:
+        return 1
+    elif data[index] == '0':
+        return 0
+    #Recursive case
+    elif n > 1 and int(data[index:index+2]) > 26:
+        return msg_num_ways(data,n-1)
+    else:
+        return msg_num_ways(data,n-1) + msg_num_ways(data,n-2)
+    
+def driver(data):
+    n = len(data)
+    return msg_num_ways(data,n)
+
+driver('127')
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+OUTPUT: 2
